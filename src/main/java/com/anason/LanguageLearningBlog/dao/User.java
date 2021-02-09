@@ -9,8 +9,9 @@ import javax.persistence.Table;
 import java.util.Date;
 
 
-@Table(name="User")
+@Table(name="user")
 public class User {
+
     @Column(name="id")
     private int id;
     @Column(name="user_name")
@@ -29,7 +30,7 @@ public class User {
     private Gender gender;
     @Column(name="profile_img")
     private String profileImg;
-    // roleId (calling the class Role not the enum Roles)
+    // roleId (calls/link with the class *Role not the enum *Roles)
     @Column(name="role")
     private Role role;
     @Column(name="registered_at")
