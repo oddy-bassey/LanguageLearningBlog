@@ -1,41 +1,50 @@
 package com.anason.LanguageLearningBlog.dao;
 
 import com.anason.LanguageLearningBlog.dao.enums.Gender;
-import com.anason.LanguageLearningBlog.dao.enums.Roles;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
-import javax.persistence.Column;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
-
-@Table(name="user")
+@Entity
+@Table
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class User {
 
-    @Column(name="id")
+    @Id
+    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column(name="user_name")
+    @Column
     private String userName;
-    @Column(name="email")
+    @Column
     private String email;
-    @Column(name="password")
+    @Column
     private String password;
-    @Column(name="first_name")
+    @Column
     private String firstName;
-    @Column(name="last_name")
+    @Column
     private String lastName;
-    @Column(name="phone_no")
+    @Column
     private String phoneNo;
-    @Column(name="gender")
+    @Column
     private Gender gender;
-    @Column(name="profile_img")
+    @Column
     private String profileImg;
     // roleId (calls/link with the class *Role not the enum *Roles)
-    @Column(name="role")
+    @Column
+    @OneToOne(fetch =FetchType.EAGER,cascade  =CascadeType.DETACH)
     private Role role;
-    @Column(name="registered_at")
+    @Column
     private Date registeredAt;
-    @Column(name="status")
+    @Column
     private int status;
 
 
