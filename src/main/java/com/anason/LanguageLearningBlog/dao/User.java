@@ -5,8 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -44,9 +46,9 @@ public class User {
     @Column
     private String profileImage;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
-    @Column
-    private Role role;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private List<Role> role;
 
     @Column
     private int status;
