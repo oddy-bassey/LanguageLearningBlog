@@ -19,6 +19,8 @@ public class Post {
     @Column(name = "cover_image")
     private String coverImage;
 
+    @Column(name = "title")
+    private String postTitle;
 
     private Date created_At;
     private Date updated_At;
