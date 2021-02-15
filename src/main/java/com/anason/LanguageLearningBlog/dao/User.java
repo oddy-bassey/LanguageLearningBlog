@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -16,7 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class User {
+public class User  {
 
     @Id
     @Column
@@ -39,11 +40,13 @@ public class User {
     @Column
     private String profileImg;
     // roleId (calls/link with the class *Role not the enum *Roles)
-    @Column
-    @OneToOne(fetch =FetchType.EAGER,cascade  =CascadeType.DETACH)
-    private Role role;
+    @JoinTable(name = "users_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ManyToMany(fetch =FetchType.EAGER,cascade  =CascadeType.DETACH)
+    private List<Role> role;
+
     @Column
     private Date registeredAt;
+
     @Column
     private int status;
 

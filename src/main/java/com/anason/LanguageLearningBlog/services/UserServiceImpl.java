@@ -1,8 +1,6 @@
 package com.anason.LanguageLearningBlog.services;
 
-import com.anason.LanguageLearningBlog.dao.Role;
 import com.anason.LanguageLearningBlog.dao.User;
-import com.anason.LanguageLearningBlog.dao.enums.RoleName;
 import com.anason.LanguageLearningBlog.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,7 +9,6 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
     private final UserRepository userRepository;
 
     @Autowired
@@ -19,9 +16,9 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+
     @Override
     public void saveUser(User user) {
-
         userRepository.save(user);
     }
 
@@ -41,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<User> getAllUser() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 

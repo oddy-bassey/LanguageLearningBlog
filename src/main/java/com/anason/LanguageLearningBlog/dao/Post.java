@@ -25,6 +25,8 @@ public class Post {
     private Date createdAt;
     @Column(name = "updated_at")
     private Date updatedAt;
+    @Column(name = "title")
+    private String postTitle;
     @Column(name = "published_at")
     private Date publishedAt;
     //stateId (call/links with the *PostState class)
